@@ -11,11 +11,10 @@ data = json.load(init_data)
 def seed_cats():
     with app.app_context():
         for cat in data["data"]:
-            id = cat["id"]
             name = cat["name"]
-            path = cat["path"]
+            image_name = cat["image_name"]
 
-            cat_instance = Cat(id = id, name = name, path = path)
+            cat_instance = Cat(name = name, image_name = image_name)
             db.session.add(cat_instance)
         
         db.session.commit()

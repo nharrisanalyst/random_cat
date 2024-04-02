@@ -4,3 +4,5 @@ coverage == 7.4.4
 Flask-SQLAlchemy == 3.1.1 
 Flask-Migrate == 4.0.7
 psycopg2 == 2.9.9
+WTForms == 3.1.2
+pillow == 10.2.0

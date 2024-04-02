@@ -14,3 +14,5 @@ def client():
 def json_of_response(response):
     """Decode json from response"""
     return json.loads(response.data.decode('utf8'))
+
+
