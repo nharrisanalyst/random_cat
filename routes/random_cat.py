@@ -37,13 +37,11 @@ def post_cat_new():
     form = CatFormName(request.form)
     file = CatFormImage(request.files)
     img = Image.open(file.image.data)
-    img_name = request.files['image'].filename
-    UPLOAD_PATH = 'public/image/cats'
-    path = "".join([UPLOAD_PATH,img_name])
-    cat = Cat(name = str(form.name), path = path)
+    image_name = request.files['image'].filename
+    cat = Cat(name = str(form.name.data), image_name = image_name)
     db.session.add(cat)
     db.session.commit()
-    img_save_path ="".join([UPLOAD_PATH,str(cat.id),"_",img_name])
+    img_save_path =cat.get_path()
     img.save(os.path.join(img_save_path))
     
-    return redirect(f'/cats/{cat.id}')
+    return redirect(f'/cat/{cat.id}')
